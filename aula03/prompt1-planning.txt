@@ -1,0 +1,45 @@
+## EXERCÍCIO 3 — Campus Connect: eventos e anúncios da faculdade
+
+**Dia 2 · Bloco de 42 minutos (2 de instruções + 32 de construção + 8 de testes)**  
+**Produto inicial:** uma única aplicação frontend estática, com dados e cadastros no próprio navegador.  
+**Pasta sugerida:** `campus-connect/`.
+
+### Modelo funcional simplificado
+
+A página terá **dois tipos de registro**: `evento` e `anuncio`. Ambos têm id, título, descrição, categoria, campus, data de criação e status. Eventos têm ainda `dataEvento`, `horario`, `local` e `vagas`; anúncios podem ter `dataExpiracao`. Um botão **Tenho interesse** pode guardar um contador local, sem nomes ou dados pessoais. Não haverá conta de usuário real.
+
+### Prompt 3A — descobrir e planejar (Bob Plan)
+
+```text
+Atue como Product Manager, UX Designer e Software Architect.
+
+Quero construir Campus Connect, um portal de eventos e anúncios de uma faculdade.
+
+O público são estudantes universitários. Eles precisam descobrir palestras, oficinas, feiras, estágios e avisos em uma página fácil de usar.
+
+MVP FIXO
+- Uma página web responsiva.
+- Dois tipos de registro: Evento e Anúncio.
+- Listagem, pesquisa, filtro por tipo e campus.
+- Cadastro, edição, exclusão e visualização.
+- Dados de demonstração fictícios previamente carregados.
+- Persistência com localStorage no mesmo navegador.
+- Sem login, servidor, backend, banco, API externa ou cadastro de dados pessoais reais.
+- HTML, CSS e JavaScript puro; arquivos index.html, styles.css, app.js e README.md.
+- Design inspirado no IBM Design Language: limpo, branco, azul, tipografia legível e poucos efeitos.
+
+NESTA ETAPA, NÃO ESCREVA CÓDIGO.
+
+Entregue apenas:
+1. Definição breve do problema.
+2. Modelo de dados dos dois tipos de registro.
+3. Componentes visuais da página.
+4. Fluxos de usuário para criar, editar, excluir, pesquisar e filtrar.
+5. Critérios de aceite específicos e verificáveis.
+6. Plano de implementação com no máximo 5 tarefas pequenas.
+7. Riscos e limitações do localStorage.
+
+Se houver ambiguidade material, faça no máximo 3 perguntas objetivas; caso contrário, proponha padrões razoáveis.
+
+Pare e aguarde meu OK antes de implementar.
+```

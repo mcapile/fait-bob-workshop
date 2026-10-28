@@ -1,0 +1,72 @@
+## EXERCÍCIO 1 — CyberPulse: landing page interativa
+
+**Dia 1 · Prática de 15 minutos**  
+**Modo no Bob:** Agent, depois de ler e entender o escopo.  
+**Pasta sugerida:** `cyberpulse-web/`  
+**Tecnologias:** HTML5, CSS3 e JavaScript puro; sem npm, backend ou API externa.  
+**Objetivo visual:** portal futurista de cibersegurança, responsivo, com conteúdo educativo.
+
+### Prompt 1A — implementação
+
+```text
+Você é um desenvolvedor frontend sênior com conhecimento em UX/UI e cibersegurança educacional.
+
+PROJETO
+Crie um MVP chamado CyberPulse: uma landing page de educação em segurança digital para estudantes universitários iniciantes.
+
+CONTEXTO
+A página será demonstrada num workshop de IBM Bob. Precisa ser impressionante visualmente, mas principalmente funcional. O público não conhece termos avançados de segurança.
+
+TECNOLOGIAS E RESTRIÇÕES
+- Use somente HTML5, CSS3 e JavaScript puro.
+- Arquivos: index.html, styles.css, app.js e README.md.
+- Não use React, frameworks, banco, servidor, login, bibliotecas externas ou APIs.
+- Não importe imagens ou fontes da internet; use CSS, SVGs locais e elementos simples.
+- Tudo deve abrir localmente no navegador ou via servidor HTTP estático.
+- Textos de notícias e alertas serão EXEMPLOS FICTÍCIOS claramente identificados. Não finja que há informação ao vivo.
+
+DESIGN
+- Estilo premium, futurista e clean: azul escuro, cyan, roxo discreto e efeitos visuais moderados.
+- Hero forte, navegação, cards elegantes, microinterações discretas e boa legibilidade.
+- Desktop, tablet e celular; respeito a prefers-reduced-motion.
+
+FUNCIONALIDADES OBRIGATÓRIAS
+1. Hero com título, subtítulo e CTA que navega para Cursos.
+2. Seção com três cursos fictícios: Fundamentos, Phishing e Segurança em Cloud.
+3. Seção "Ameaças em foco" com três cenários EDUCATIVOS FICTÍCIOS, cada um com descrição e prevenção.
+4. Quiz de 5 perguntas de múltipla escolha sobre segurança digital.
+5. Quiz apresenta pontuação final e explicação de cada resposta.
+6. Menu e botões com ações reais; não criar controles apenas decorativos.
+7. Sem formulário de coleta de dados pessoais.
+
+CRITÉRIOS DE ACEITE
+- Página abre sem erros de console.
+- Cada CTA funciona; links internos apontam para seções existentes.
+- Quiz contabiliza 5 perguntas e pontuação corretamente.
+- O layout não cria rolagem horizontal em telas pequenas.
+- O conteúdo demonstra claramente que as ameaças são exemplos didáticos.
+
+EXECUÇÃO
+1. Informe um plano de implementação em até 5 linhas.
+2. Implemente os arquivos.
+3. Revise links, interações e erros de JavaScript.
+4. Explique em 4 linhas como executar.
+5. Reporte o que foi realmente validado e o que não foi testado.
+
+Não invente resultados de testes. Não implemente funcionalidades fora do escopo.
+```
+
+### Prompt 1B — ajuste visual (opcional, se sobrar tempo)
+
+```text
+Revise o CyberPulse existente sem refazer o projeto. Melhore apenas a hierarquia visual, espaçamentos, responsividade, contraste e feedback de interação. Preserve os comportamentos e rode novamente os testes básicos. Liste no máximo cinco alterações e seus efeitos.
+```
+
+### Validação rápida
+
+- Botão "Explorar cursos" leva à seção correta.
+- Há três cursos, três cenários fictícios e cinco perguntas no quiz.
+- Uma resposta errada recebe explicação, não só aviso de falha.
+- Teste na largura de celular pelo DevTools do navegador.
+
+---

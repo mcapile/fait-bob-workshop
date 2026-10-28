@@ -1,0 +1,21 @@
+### Prompt 3C — avaliação e correção (Bob Agent ou Ask para revisão)
+
+```text
+Revise Campus Connect contra os dez critérios de aceite aprovados. Não redesenhe a aplicação nem adicione funcionalidades.
+
+1. Crie um checklist com PASS, FAIL ou NOT TESTED para cada critério.
+2. Procure erros de validação, persistência, edição, exclusão, filtros e responsividade.
+3. Se encontrar defeitos reproduzíveis, corrija apenas esses defeitos.
+4. Reexecute os testes pertinentes e informe exatamente o que foi testado.
+5. Registre as limitações do localStorage e o próximo ticket técnico.
+
+Não declare que testou algo que não foi realmente executado.
+```
+
+### Validação rápida
+
+- Cadastre uma oficina fictícia de IA e recarregue a página.
+- Edite a data do evento e confirme que não houve duplicação.
+- Filtre somente anúncios do Campus Centro.
+- Tente salvar evento sem título: deve bloquear e explicar.
+- Exclua um item e cancele a confirmação antes da remoção.

@@ -1,0 +1,90 @@
+## EXERCÍCIO 4 — Containerização local do Campus Connect (ao vivo)
+
+**Dia 2 · Bloco de 20 minutos (explicação, build, run, teste e parada).** 
+**Docker Desktop deve estar ligado**, com o engine Linux ativo. Pré-baixe `nginx:stable-alpine` com `docker pull nginx:stable-alpine` antes da aula; sem rede ou cache da base, o build não conseguirá prosseguir.
+
+### Prompt 4A — Bob Plan: preparar o empacotamento
+
+```text
+Você é um engenheiro DevOps e professor para iniciantes.
+
+CONTEXTO
+O Campus Connect V1 está funcional em index.html, styles.css e app.js. É um frontend estático com localStorage e nenhum backend.
+
+OBJETIVO
+Criar uma imagem Docker LOCAL nomeada campus-connect:workshop, com Nginx para servir os arquivos, e um container acessível em http://localhost:8080.
+
+NA ETAPA DE PLAN, NÃO MODIFIQUE ARQUIVOS E NÃO EXECUTE COMANDOS.
+
+Mostre:
+1. Quais arquivos exatamente serão copiados para a imagem.
+2. Dockerfile baseado em nginx:stable-alpine, cujo pull será feito antes do workshop.
+3. .dockerignore excluindo .bob, .venv, .env, planilhas e arquivos irrelevantes.
+4. Comandos de build, criação, verificação HTTP e parada, sem Docker Hub/registry.
+5. Critérios de aceite e limitações do localStorage.
+6. Riscos: Docker Desktop desligado, base não armazenada localmente e porta 8080 ocupada.
+
+Pare e aguarde meu OK antes de criar ou executar qualquer coisa.
+```
+
+### Prompt 4B — Bob Agent: criar Dockerfile e documentar
+
+```text
+Aprovo o plano da etapa Docker local.
+
+Crie na raiz do Campus Connect somente Dockerfile e .dockerignore; acrescente ao README instruções de build/run/stop no Windows PowerShell. Não reestruture nem reescreva o frontend.
+
+Use como referência:
+
+Dockerfile:
+FROM nginx:stable-alpine
+COPY index.html styles.css app.js /usr/share/nginx/html/
+EXPOSE 80
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 CMD wget -q -O /dev/null http://127.0.0.1/ || exit 1
+
+O Dockerfile precisa continuar válido com a instrução HEALTHCHECK na mesma linha ou como continuação válida. Não use backend, API, banco, secrets ou volumes.
+
+Primeiro crie os arquivos e mostre o diff. Não execute Docker ainda: aguarde meu OK para os comandos.
+```
+
+### Prompt 4C — Bob Agent: build local e demonstração (após OK)
+
+```text
+Aprovo executar Docker localmente com os arquivos revisados.
+
+Na raiz do Campus Connect, execute quando o Docker Desktop estiver ativo:
+
+1. docker version
+2. docker image ls nginx
+3. docker build --pull=false -t campus-connect:workshop .
+4. docker image ls campus-connect
+5. docker run --rm -d --name campus-connect-workshop -p 8080:80 campus-connect:workshop
+6. docker ps --filter "name=campus-connect-workshop"
+7. curl.exe -I http://localhost:8080/
+8. docker logs campus-connect-workshop
+
+Oriente o usuário a abrir http://localhost:8080 no navegador para cadastrar um evento fictício e atualizar a página. Depois, mediante confirmação, pare o container com:
+
+docker stop campus-connect-workshop
+
+Demonstre que docker image ls campus-connect ainda mostra a imagem local.
+
+Se um comando falhar, interrompa a sequência, mostre o erro exato e proponha correção específica. Não tente publicar a imagem na nuvem. Não afirme que algo foi executado sem evidência.
+```
+
+### Passos para o instrutor — Powershell
+
+```powershell
+# PRÉ-EVENTO (com rede)
+docker pull nginx:stable-alpine
+
+# AO VIVO, na raiz do Campus Connect
+docker build --pull=false -t campus-connect:workshop .
+docker image ls campus-connect
+docker run --rm -d --name campus-connect-workshop -p 8080:80 campus-connect:workshop
+curl.exe -I http://localhost:8080/
+# Abrir navegador, criar um evento fictício e apertar F5
+docker stop campus-connect-workshop
+```
+
+**Atenção:** `localStorage` no endereço `http://localhost:8000` não é o mesmo armazenamento da origem `http://localhost:8080`. Não há compartilhamento de dados entre navegadores, computadores ou usuários. Containerizar a página não cria persistência no servidor.

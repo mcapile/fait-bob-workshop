@@ -1,0 +1,181 @@
+# DESAFIO: CRIAR UMA SKILL DE NORMALIZAÇÃO DE PLANILHAS
+
+Atue como um Senior AI Engineer, Python Developer e especialista em automação e qualidade de dados.
+
+Seu objetivo é **CRIAR DO ZERO uma skill reutilizável para o IBM Bob**, chamada `normalizar-planilha`.
+
+Esta skill deverá permitir que qualquer usuário forneça apenas o caminho de uma planilha Excel e solicite sua normalização, sem precisar conhecer Python ou executar scripts manualmente.
+
+## 1. Objetivo da skill
+
+A skill deverá:
+
+- Receber o caminho de um arquivo Excel (.xlsx).
+- Inspecionar automaticamente as abas, colunas e registros.
+- Identificar inconsistências nos dados.
+- Normalizar os campos conforme regras definidas.
+- Identificar duplicidades.
+- Validar os resultados.
+- Gerar uma nova planilha corrigida.
+- Produzir um relatório detalhado das alterações.
+- Apresentar um resumo do processamento ao usuário.
+
+A execução deverá ser coordenada integralmente pelo IBM Bob.
+
+## 2. Planilha de referência
+
+Utilize a planilha Excel disponível no workspace como referência para compreender os tipos de inconsistências.
+
+Inspecione suas abas e estrutura antes de definir as regras.
+
+Não presuma nomes de colunas ou formatos sem verificar o conteúdo.
+
+A skill não deve ficar limitada ao nome desse arquivo. Ela deverá ser reutilizável em outras planilhas com estrutura semelhante.
+
+## 3. Regras de normalização
+
+Implemente tratamento para:
+
+- Espaços desnecessários no início, meio e final de textos.
+- Diferenças de maiúsculas e minúsculas.
+- Nomes de pessoas com capitalização inconsistente.
+- E-mails com formatação irregular.
+- Telefones com formatos diferentes.
+- Datas em formatos distintos.
+- Valores monetários com diferentes separadores.
+- Categorias com grafias equivalentes.
+- Status escritos de maneiras diferentes.
+- Campos vazios ou inválidos.
+- Registros duplicados.
+
+Regras obrigatórias de segurança dos dados:
+
+- Nunca inventar informações.
+- Nunca alterar o arquivo original.
+- Não remover registros automaticamente.
+- Em casos ambíguos, preservar o valor e registrar a inconsistência.
+- Preservar todas as linhas de entrada.
+- Registrar alterações de forma auditável.
+- Não imprimir dados pessoais desnecessariamente no console.
+
+## 4. Arquitetura da skill
+
+Crie a seguinte estrutura dentro do projeto:
+
+.bob/
+  skills/
+    normalizar-planilha/
+      SKILL.md
+      scripts/
+        normalize.py
+      references/
+        normalization-rules.md
+      README.md
+
+O SKILL.md deve conter YAML front matter válido, incluindo:
+
+- name: normalizar-planilha
+- description: instrução clara informando quando o Bob deve usar a skill
+- user-invocable: true
+
+A skill deverá instruir o Bob a:
+
+1. Receber o caminho da planilha informado pelo usuário.
+2. Verificar se o arquivo existe.
+3. Verificar o ambiente Python e as dependências necessárias.
+4. Executar automaticamente o script Python da skill.
+5. Examinar os resultados e verificar erros.
+6. Apresentar os arquivos de saída e o resumo ao usuário.
+
+## 5. Implementação Python
+
+Crie um script Python real, funcional e reutilizável.
+
+Preferencialmente utilize `openpyxl` e a biblioteca padrão do Python.
+
+O script deverá aceitar argumentos de linha de comando para entrada e saída, sem caminhos fixos.
+
+O Bob deverá executar o script por meio de suas ferramentas de terminal.
+
+Se alguma dependência estiver ausente, verifique se existe um ambiente virtual apropriado. Caso seja necessária uma instalação, solicite autorização antes de modificar o ambiente.
+
+O usuário final não deverá precisar executar Python manualmente.
+
+## 6. Resultado esperado
+
+O processamento deverá criar, dentro de uma pasta `saida`, um arquivo Excel contendo:
+
+**Aba DADOS_ORIGINAIS**
+Cópia dos dados originais para rastreabilidade.
+
+**Aba DADOS_NORMALIZADOS**
+Registros processados e padronizados.
+
+**Aba AUDITORIA**
+Linha, coluna, valor original, valor normalizado, tipo da inconsistência e ação realizada.
+
+**Aba RESUMO**
+Quantidade de linhas processadas, alterações, alertas, duplicidades e erros.
+
+O nome dos arquivos de saída não poderá sobrescrever resultados existentes silenciosamente.
+
+## 7. Testes obrigatórios
+
+Crie testes automatizados com dados fictícios para verificar:
+
+- Normalização de textos.
+- Tratamento de e-mails e telefones.
+- Conversão segura de datas.
+- Normalização de valores numéricos.
+- Detecção de duplicidades.
+- Preservação dos dados originais.
+- Tratamento de valores ausentes.
+- Identificação de informações ambíguas.
+- Integridade do arquivo Excel gerado.
+
+Execute os testes disponíveis.
+
+Corrija problemas identificados antes de considerar a skill concluída.
+
+## 8. Experiência do usuário
+
+Após a criação, a skill deverá ser acionável com um comando simples, como:
+
+/normalizar-planilha
+
+Normalize o arquivo C:\WorkshopBob\dados.xlsx
+
+A partir desse comando, o Bob deverá conduzir automaticamente a execução.
+
+O resultado apresentado deve ser compreensível para pessoas sem conhecimento de programação.
+
+## 9. Critérios de aceite
+
+Considere a atividade concluída somente quando:
+
+- A skill estiver criada no local correto.
+- O SKILL.md for válido e tiver descrição clara.
+- O script Python estiver implementado.
+- Os testes automatizados passarem.
+- A skill não depender de um caminho de arquivo fixo.
+- A normalização não exigir comandos manuais do usuário.
+- O arquivo original for preservado.
+- A auditoria permitir identificar todas as alterações automáticas.
+
+## 10. Instruções finais
+
+Você está autorizado a criar os arquivos da skill, implementar o script e executar testes com dados fictícios.
+
+Primeiro, apresente brevemente a estrutura que será criada. Em seguida, implemente e valide.
+
+NÃO normalize definitivamente a planilha de referência nesta etapa. Ela será utilizada posteriormente para demonstrar a execução da skill.
+
+Ao finalizar, apresente:
+
+- Estrutura de arquivos criada.
+- Funcionalidades implementadas.
+- Resultado dos testes.
+- Eventuais limitações.
+- Exemplo exato de como invocar a skill.
+
+Não declare testes como aprovados se não tiver conseguido executá-los.

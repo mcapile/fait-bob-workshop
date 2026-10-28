@@ -1,0 +1,41 @@
+### Prompt 3B — implementar MVP (Bob Agent)
+
+```text
+Aprovo o plano de Campus Connect. Implemente somente o MVP definido e os critérios de aceite que aprovamos.
+
+DIRETRIZES
+- Crie index.html, styles.css, app.js e README.md.
+- Use HTML5, CSS3 e JavaScript puro; não adicione framework ou dependências.
+- Evite imagens ou fontes remotas; prefira SVGs locais, CSS e ícones simples.
+- Interface limpa, moderna e altamente legível, responsiva, com identidade azul e branca.
+- Use uma barra de navegação, hero, painel de busca/filtros, grid de cards e formulário de cadastro/edição.
+- Use modais acessíveis ou um painel de formulário; rotule campos e valide entradas.
+- Preencha a primeira execução com ao menos 4 eventos e 4 anúncios fictícios de exemplo.
+- Persistência usando uma chave versionada "campusconnect:v1" no localStorage.
+- Não reintroduza dados de exemplo se o usuário já tiver editado sua base local.
+- Os botões Criar, Editar, Excluir, Pesquisar, Filtrar e Limpar filtro devem funcionar.
+- Antes de excluir, peça confirmação explícita.
+- Campos obrigatórios: título, descrição e categoria; para eventos, data, horário e local.
+- Validar data e horário; não permitir HTML injetado virar conteúdo executável (use textContent/escapamento, não innerHTML com texto de usuários).
+- Não armazenar credenciais ou informações sensíveis.
+- Se implementar "Tenho interesse", guarde apenas uma marcação local por evento, sem identidade pessoal e com aviso de demonstração.
+
+CRITÉRIOS DE ACEITE
+1. Sem erros JavaScript visíveis no console ao carregar.
+2. Os registros de exemplo aparecem na primeira execução.
+3. Novo evento válido aparece imediatamente no grid.
+4. Após atualizar a página, o novo evento continua no mesmo navegador.
+5. Edição atualiza o registro correto e não duplica o item.
+6. Exclusão remove somente o registro selecionado após confirmação.
+7. Busca textual e filtros funcionam para Eventos e Anúncios.
+8. Formulários inválidos exibem mensagens compreensíveis.
+9. Layout utilizável em 375px e desktop.
+10. README explica como executar localmente e a limitação do localStorage.
+
+PROCESSO
+- Implementar em pequenos passos.
+- Verificar cada recurso antes de avançar.
+- Executar os testes que o ambiente permitir; não inventar resultados.
+- Descrever alterações realizadas e pendências.
+
+Não adicione backend, autenticação, container nem banco de dados agora.
